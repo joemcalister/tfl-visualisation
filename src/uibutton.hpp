@@ -23,9 +23,10 @@ class UIButton
         void setBackgroundColorNormal(float _r, float _g, float _b);
         void setBackgroundColorHover(float _r, float _g, float _b);
     private:
-        ofRectangle base;
+        ofRectangle base, highlightCover, shadowCover;
         string title;
         ofColor regularBackground, hoverBackground;
+        ofTrueTypeFont font;
 };
 
 #endif /* uibutton_hpp */

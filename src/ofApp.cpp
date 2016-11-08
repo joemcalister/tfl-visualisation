@@ -3,9 +3,9 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-    debugButton = UIButton(300, 300, 100, 50, "Hey there");
-    debugButton.setBackgroundColorNormal(255, 100, 0);
-    debugButton.setBackgroundColorHover(0, 255, 100);
+    debugButton = UIButton(300, 300, 100, 50, "It works!");
+    //debugButton.setBackgroundColorNormal(255, 100, 0);
+    //debugButton.setBackgroundColorHover(0, 255, 100);
     
 }
 
@@ -16,7 +16,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofBackground(255, 0, 0);
+    ofBackground(255);
     
     debugButton.draw();
 }
