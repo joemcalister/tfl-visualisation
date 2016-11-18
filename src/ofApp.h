@@ -2,6 +2,8 @@
 
 #include "ofMain.h"
 #include "uibutton.hpp"
+#include "circle.hpp"
+#include <vector>
 
 class ofApp : public ofBaseApp{
 
@@ -22,5 +24,7 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
         UIButton debugButton;
-		
+    
+        ofEasyCam camera;
+        vector <circle> circles;
 };
