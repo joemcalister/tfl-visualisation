@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "uibutton.hpp"
 #include "circle.hpp"
+#include "VisObject.hpp"
 #include <vector>
 
 class ofApp : public ofBaseApp{
@@ -27,4 +28,5 @@ class ofApp : public ofBaseApp{
     
         ofEasyCam camera;
         vector <circle> circles;
+        VisObject visObject;
 };

@@ -9,6 +9,7 @@ void ofApp::setup(){
     //debugButton.setBackgroundColorHover(0, 255, 100);
     
    
+    /*
     float r = 10;
     float y = 100;
     for (int i=0; i<30; i++)
@@ -19,8 +20,14 @@ void ofApp::setup(){
         r+=3;
         y-=3;
     }
+     */
     
+    // easycam support
     camera = ofEasyCam();
+    
+    // create vis object
+    visObject = VisObject();
+    visObject.createVisObject();
 }
 
 //--------------------------------------------------------------
@@ -30,18 +37,11 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-  
-    
     ofBackground(255);
     
-    //debugButton.draw();
-    
-    
+
     camera.begin();
-    for (auto &circle:circles)
-    {
-        circle.draw();
-    }
+    visObject.draw();
     camera.end();
 }
 
