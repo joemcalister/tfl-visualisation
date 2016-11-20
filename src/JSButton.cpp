@@ -6,9 +6,9 @@
 //
 //
 
-#include "uibutton.hpp"
+#include "JSButton.hpp"
 
-UIButton::UIButton(float _x, float _y, float _w, float _h, string _t)
+JSButton::JSButton(float _x, float _y, float _w, float _h, string _t)
 {
     // set non-user defaults
     regularBackground = ofColor();
@@ -43,7 +43,7 @@ UIButton::UIButton(float _x, float _y, float _w, float _h, string _t)
     
 }
 
-UIButton::UIButton()
+JSButton::JSButton()
 {
     // set non-user defaults
     regularBackground = ofColor();
@@ -62,7 +62,7 @@ UIButton::UIButton()
     font.loadFont("SF-UI-Display-Medium.otf", 12);
 }
 
-void UIButton::draw()
+void JSButton::draw()
 {
     // draw the rectangle
     ofFill();
@@ -115,7 +115,7 @@ void UIButton::draw()
     
 }
 
-void UIButton::setBackgroundColorNormal(float _r, float _g, float _b)
+void JSButton::setBackgroundColorNormal(float _r, float _g, float _b)
 {
     // set the regular background -- this is when the mouse is not over or pressed
     regularBackground.r = _r;
@@ -123,7 +123,7 @@ void UIButton::setBackgroundColorNormal(float _r, float _g, float _b)
     regularBackground.b = _b;
 }
 
-void UIButton::setBackgroundColorHover(float _r, float _g, float _b)
+void JSButton::setBackgroundColorHover(float _r, float _g, float _b)
 {
     // set the hover background -- this is when the mouse is over the button but not pressed
     hoverBackground.r = _r;

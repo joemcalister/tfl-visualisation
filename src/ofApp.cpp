@@ -4,24 +4,6 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-    //debugButton = UIButton(300, 300, 100, 50, "It works!");
-    //debugButton.setBackgroundColorNormal(255, 100, 0);
-    //debugButton.setBackgroundColorHover(0, 255, 100);
-    
-   
-    /*
-    float r = 10;
-    float y = 100;
-    for (int i=0; i<30; i++)
-    {
-        circle c = circle(r, y);
-        circles.push_back(c);
-        
-        r+=3;
-        y-=3;
-    }
-     */
-    
     // easycam support
     camera = ofEasyCam();
     

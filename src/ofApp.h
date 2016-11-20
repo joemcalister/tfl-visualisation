@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "uibutton.hpp"
+#include "JSButton.hpp"
 #include "circle.hpp"
 #include "VisObject.hpp"
 #include <vector>
@@ -24,7 +24,7 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-        UIButton debugButton;
+        JSButton debugButton;
     
         ofEasyCam camera;
         vector <circle> circles;

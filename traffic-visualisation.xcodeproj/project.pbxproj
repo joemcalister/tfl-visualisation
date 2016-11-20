@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5791C0DB8168C5B3510B3FE2 /* uibutton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FA69514C6A75C13962749 /* uibutton.cpp */; };
+		5791C0DB8168C5B3510B3FE2 /* JSButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FA69514C6A75C13962749 /* JSButton.cpp */; };
 		D87041E11DE0F53700FC537C /* Networking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D87041DF1DE0F53700FC537C /* Networking.cpp */; };
 		D87041E61DE1002C00FC537C /* VisObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D87041E41DE1002C00FC537C /* VisObject.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -47,9 +47,9 @@
 
 /* Begin PBXFileReference section */
 		01291009247519B91F49435E /* circle.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = circle.cpp; path = src/circle.cpp; sourceTree = SOURCE_ROOT; };
-		1F5FA69514C6A75C13962749 /* uibutton.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = uibutton.cpp; path = src/uibutton.cpp; sourceTree = SOURCE_ROOT; };
+		1F5FA69514C6A75C13962749 /* JSButton.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = JSButton.cpp; path = src/JSButton.cpp; sourceTree = SOURCE_ROOT; };
 		464BFF16329F755550655797 /* circle.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = circle.hpp; path = src/circle.hpp; sourceTree = SOURCE_ROOT; };
-		AEEB26C267561FAD4A29097F /* uibutton.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = uibutton.hpp; path = src/uibutton.hpp; sourceTree = SOURCE_ROOT; };
+		AEEB26C267561FAD4A29097F /* JSButton.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = JSButton.hpp; path = src/JSButton.hpp; sourceTree = SOURCE_ROOT; };
 		D87041DF1DE0F53700FC537C /* Networking.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Networking.cpp; sourceTree = "<group>"; };
 		D87041E01DE0F53700FC537C /* Networking.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Networking.hpp; sourceTree = "<group>"; };
 		D87041E21DE0FE6800FC537C /* json.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = json.hpp; sourceTree = "<group>"; };
@@ -109,6 +109,15 @@
 			name = VisObject;
 			sourceTree = "<group>";
 		};
+		D8CA46C41DE2196100C5BAA7 /* JSButton */ = {
+			isa = PBXGroup;
+			children = (
+				1F5FA69514C6A75C13962749 /* JSButton.cpp */,
+				AEEB26C267561FAD4A29097F /* JSButton.hpp */,
+			);
+			name = JSButton;
+			sourceTree = "<group>";
+		};
 		D8CDB3AE1DDF0174007B4E76 /* circle */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,8 +158,7 @@
 				D87041E31DE1000F00FC537C /* VisObject */,
 				D87041DE1DE0F52200FC537C /* networking */,
 				D8CDB3AE1DDF0174007B4E76 /* circle */,
-				1F5FA69514C6A75C13962749 /* uibutton.cpp */,
-				AEEB26C267561FAD4A29097F /* uibutton.hpp */,
+				D8CA46C41DE2196100C5BAA7 /* JSButton */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -255,7 +263,7 @@
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				D87041E11DE0F53700FC537C /* Networking.cpp in Sources */,
 				FF54DC5CB55B96C2E45D9487 /* circle.cpp in Sources */,
-				5791C0DB8168C5B3510B3FE2 /* uibutton.cpp in Sources */,
+				5791C0DB8168C5B3510B3FE2 /* JSButton.cpp in Sources */,
 				D87041E61DE1002C00FC537C /* VisObject.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

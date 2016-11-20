@@ -6,18 +6,18 @@
 //
 //
 
-#ifndef uibutton_hpp
-#define uibutton_hpp
+#ifndef JSButton_hpp
+#define JSButton_hpp
 
 #include <stdio.h>
 #include "ofMain.h"
 #include <string>
 
-class UIButton
+class JSButton
 {
     public:
-        UIButton();
-        UIButton(float _x, float _y, float _w, float _h, string _t);
+        JSButton();
+        JSButton(float _x, float _y, float _w, float _h, string _t);
         void draw();
     
         void setBackgroundColorNormal(float _r, float _g, float _b);
@@ -29,4 +29,4 @@ class UIButton
         ofTrueTypeFont font;
 };
 
-#endif /* uibutton_hpp */
+#endif /* JSButton_hpp */
