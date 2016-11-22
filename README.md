@@ -1,4 +1,4 @@
-### Traffic visulisation using TfL data
+# Traffic visulisation using TfL data
 This project is a visual representation of the road incidents that occur in the past 5 days in London, using data from TfL and openFrameworks.
 
 ## Current stage
