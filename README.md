@@ -10,3 +10,4 @@ Click and drag to pan around the object, use the mouse scroll wheel to zoom in a
 ## How to install
 Place the ```traffic-visualisation``` folder within a folder called ```PAP``` in the apps directory within the open frameworks folder, therefore the path should be ```(openFrameworks folder) > apps > PAP > traffic-visulisation```
 No addons are required.
+*Note: It may take a few seconds for the application to launch, this is normal. Also an internet connection is required otherwise the program will crash, this is intentional*
