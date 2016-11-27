@@ -18,6 +18,10 @@ JSButton::JSButton(float _x, float _y, float _w, float _h, string _t)
     hoverBackground.r = 200;
     hoverBackground.g = 200;
     hoverBackground.b = 200;
+    borderColor.r = 0;
+    borderColor.g = 0;
+    borderColor.b = 0;
+    borderWidth = 0;
     
     
     // set the coordinates
@@ -34,12 +38,11 @@ JSButton::JSButton(float _x, float _y, float _w, float _h, string _t)
     shadowCover.width = _w;
     shadowCover.height = _h;
     
-    
-    
+    // set title
     title = _t;
     
     // load font
-    font.loadFont("SF-UI-Display-Medium.otf", 12);
+    font.load("SF-UI-Display-Medium.otf", 12);
     
 }
 
@@ -50,6 +53,13 @@ JSButton::JSButton()
     regularBackground.r = 210;
     regularBackground.g = 210;
     regularBackground.b = 210;
+    hoverBackground.r = 200;
+    hoverBackground.g = 200;
+    hoverBackground.b = 200;
+    borderColor.r = 0;
+    borderColor.g = 0;
+    borderColor.b = 0;
+    borderWidth = 0;
     
     
     // set the default coordinates and string
@@ -59,7 +69,7 @@ JSButton::JSButton()
     base.height = 50;
     
     // load font
-    font.loadFont("SF-UI-Display-Medium.otf", 12);
+    font.load("SF-UI-Display-Medium.otf", 12);
 }
 
 void JSButton::draw()
@@ -67,9 +77,24 @@ void JSButton::draw()
     // draw the rectangle
     ofFill();
     
+    
     // detect mouse over
     if (((ofGetMouseX() >= base.x)&&(ofGetMouseX() <= base.x + base.width))&&((ofGetMouseY() >= base.y)&&(ofGetMouseY() <= base.y + base.height)))
     {
+        
+        // draw a border -- change to polyline method soon
+        if (borderWidth > 0)
+        {
+            ofRectangle newRect = ofRectangle();
+            newRect.x = base.x-1;
+            newRect.y = base.y-1;
+            newRect.width = base.width+2;
+            newRect.height = base.height+2;
+            
+            ofSetColor(borderColor);
+            ofDrawRectRounded(newRect, 10);
+        }
+    
         // mouse over
         ofSetColor(hoverBackground);
         
@@ -95,9 +120,23 @@ void JSButton::draw()
     }else {
         // mouse not over
         
+        // draw a border -- change to polyline method soon
+        if (borderWidth > 0)
+        {
+            ofRectangle newRect = ofRectangle();
+            newRect.x = base.x-1;
+            newRect.y = base.y-1;
+            newRect.width = base.width+2;
+            newRect.height = base.height+2;
+            
+            ofSetColor(borderColor);
+            ofDrawRectRounded(newRect, 10);
+        }
+        
         // draw the rectangle
         ofSetColor(regularBackground);
         ofDrawRectRounded(base, 10);
+        
     }
     
     
@@ -107,7 +146,7 @@ void JSButton::draw()
     ofSetColor(0,0,0);
     
     // load the font
-    font.drawString(title, (base.width/2) - (font.stringWidth(title)/2), 30);
+    font.drawString(title, (base.width/2) - (font.stringWidth(title)/2), 25);
     
     // pop the matrix
     ofPopMatrix();
@@ -130,4 +169,25 @@ void JSButton::setBackgroundColorHover(float _r, float _g, float _b)
     hoverBackground.g = _g;
     hoverBackground.b = _b;
 }
+
+void JSButton::setBorderColor(float _r, float _g, float _b)
+{
+    // set the border color
+    borderColor.r = _r;
+    borderColor.g = _g;
+    borderColor.b = _b;
+}
+
+void JSButton::setBorderWidth(int width)
+{
+    // set the border width
+    borderWidth = width;
+}
+
+/*
+void JSButton::mousePressed(void (*ofApp::callback)(bool), int _x, int _y, int _button)
+{
+    callback(true);
+}
+*/
 

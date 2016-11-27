@@ -112,8 +112,8 @@
 		D8CA46C41DE2196100C5BAA7 /* JSButton */ = {
 			isa = PBXGroup;
 			children = (
-				1F5FA69514C6A75C13962749 /* JSButton.cpp */,
 				AEEB26C267561FAD4A29097F /* JSButton.hpp */,
+				1F5FA69514C6A75C13962749 /* JSButton.cpp */,
 			);
 			name = JSButton;
 			sourceTree = "<group>";

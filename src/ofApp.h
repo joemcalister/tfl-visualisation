@@ -5,6 +5,19 @@
 #include "circle.hpp"
 #include "VisObject.hpp"
 #include <vector>
+#include <thread>
+
+class VisThread : public ofThread {
+    
+    // thread function
+    void threadedFunction() {
+        // create the vis object
+        visObject->createVisObject();
+    }
+    
+    public:
+        VisObject *visObject;
+};
 
 class ofApp : public ofBaseApp{
 
@@ -24,9 +37,14 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-        JSButton debugButton;
-    
+        void buttonCallback(bool finshed);
+        JSButton debugButton, colourCodeToggle;
         ofEasyCam camera;
         vector <circle> circles;
         VisObject visObject;
+        bool loading;
+        VisThread visThread;
+        ofTrueTypeFont font;
 };
+
+

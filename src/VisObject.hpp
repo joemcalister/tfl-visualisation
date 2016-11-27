@@ -23,6 +23,7 @@ class VisObject
         VisObject();
         bool createVisObject();
         void draw();
+        bool loaded;
 };
 
 #endif /* VisObject_hpp */

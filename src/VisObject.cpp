@@ -10,7 +10,7 @@
 
 VisObject::VisObject()
 {
-    
+    loaded = false;
 }
 
 bool VisObject::createVisObject()
@@ -22,10 +22,10 @@ bool VisObject::createVisObject()
     if (got_data)
     {
         // we need to process the data into circles
-        
         float r = 10;
         float y = 100;
         
+        // almost center the object
         y = (5*network.data.size())/2;
         
         for (auto &obj:network.data)
@@ -38,6 +38,9 @@ bool VisObject::createVisObject()
             y -= 5;
         }
         
+        // loaded flag
+        loaded = true;
+        
     }else {
         // there's been an error
         cout << "Error runnng program, please check internet connectivity and try again" << endl;
@@ -46,6 +49,7 @@ bool VisObject::createVisObject()
     
 }
 
+// main draw function for the object
 void VisObject::draw()
 {
     for (auto &circle:circles)
