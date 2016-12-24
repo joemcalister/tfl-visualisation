@@ -22,6 +22,10 @@ JSButton::JSButton(float _x, float _y, float _w, float _h, string _t)
     borderColor.g = 0;
     borderColor.b = 0;
     borderWidth = 0;
+    textColor = ofColor(255,255,255);
+    onTextColor = ofColor(255,255,255);
+    highlightedTextColor = ofColor(255,255,255);
+    onBackground = ofColor(210,210,210);
     
     
     // set the coordinates
@@ -74,13 +78,19 @@ JSButton::JSButton()
 
 void JSButton::draw()
 {
+    // not hidden
+    hidden = false;
+    
     // draw the rectangle
     ofFill();
     
     
     // detect mouse over
+    ofColor textCol;
     if (((ofGetMouseX() >= base.x)&&(ofGetMouseX() <= base.x + base.width))&&((ofGetMouseY() >= base.y)&&(ofGetMouseY() <= base.y + base.height)))
     {
+        // text color
+        textCol = highlightedTextColor;
         
         // draw a border -- change to polyline method soon
         if (borderWidth > 0)
@@ -120,6 +130,14 @@ void JSButton::draw()
     }else {
         // mouse not over
         
+        // text color
+        if (!on)
+        {
+            textCol = textColor;
+        }else {
+            textCol = onTextColor;
+        }
+        
         // draw a border -- change to polyline method soon
         if (borderWidth > 0)
         {
@@ -134,7 +152,13 @@ void JSButton::draw()
         }
         
         // draw the rectangle
-        ofSetColor(regularBackground);
+        if (on)
+        {
+            ofSetColor(onBackground);
+        }else {
+            ofSetColor(regularBackground);
+        }
+        
         ofDrawRectRounded(base, 10);
         
     }
@@ -143,7 +167,7 @@ void JSButton::draw()
     // draw the text
     ofPushMatrix();
     ofTranslate(base.x, base.y);
-    ofSetColor(0,0,0);
+    ofSetColor(textCol);
     
     // load the font
     font.drawString(title, (base.width/2) - (font.stringWidth(title)/2), 25);
@@ -152,6 +176,11 @@ void JSButton::draw()
     ofPopMatrix();
 
     
+}
+
+void JSButton::hide()
+{
+    hidden = true;
 }
 
 void JSButton::setBackgroundColorNormal(float _r, float _g, float _b)
@@ -184,10 +213,37 @@ void JSButton::setBorderWidth(int width)
     borderWidth = width;
 }
 
-/*
-void JSButton::mousePressed(void (*ofApp::callback)(bool), int _x, int _y, int _button)
+void JSButton::setTextColor(float _r, float _g, float _b)
 {
-    callback(true);
+    textColor = ofColor(_r, _g, _b);
 }
-*/
+
+void JSButton::setOnTextColor(float _r, float _g, float _b)
+{
+    onTextColor = ofColor(_r, _g, _b);
+}
+
+void JSButton::setHighlightedTextColor(float _r, float _g, float _b)
+{
+    highlightedTextColor = ofColor(_r, _g, _b);
+}
+
+void JSButton::setBackgroundColorOn(float _r, float _g, float _b)
+{
+    onBackground = ofColor(_r, _g, _b);
+}
+
+void JSButton::addHandler(std::function<void(bool)> callback)
+{
+    // determine if was pressed
+    if ((((ofGetMouseX() >= base.x)&&(ofGetMouseX() <= base.x + base.width))&&((ofGetMouseY() >= base.y)&&(ofGetMouseY() <= base.y + base.height))) && !hidden)
+    {
+        // mouse was pressed
+        callback(true);
+    }else {
+        // mouse was not pressed
+        callback(false);
+    }
+}
+
 

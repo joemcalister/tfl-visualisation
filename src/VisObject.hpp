@@ -19,11 +19,18 @@ class VisObject
     private:
         Networking network;
         vector<circle> circles;
+        vector<string> descriptions;
     public:
         VisObject();
         bool createVisObject();
         void draw();
         bool loaded;
+        bool coloured = false;
+        void toggleLayers(bool state);
+        bool layerMode = false;
+        int layerIndex;
+        int numberOfLayers();
+        string descriptionForLayer(int index);
 };
 
 #endif /* VisObject_hpp */

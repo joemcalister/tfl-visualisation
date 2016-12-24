@@ -6,6 +6,7 @@
 #include "VisObject.hpp"
 #include <vector>
 #include <thread>
+#include "ofxParagraph.h"
 
 class VisThread : public ofThread {
     
@@ -37,14 +38,18 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-        void buttonCallback(bool finshed);
-        JSButton debugButton, colourCodeToggle;
+        void toggleColourCallback(bool clicked);
+        void viewLayersCallback(bool clicked);
+        void upLayerCallback(bool clicked);
+        void downLayerCallback(bool clicked);
+        JSButton debugButton, colourCodeToggle, viewLayers, upLayer, downLayer;
         ofEasyCam camera;
         vector <circle> circles;
         VisObject visObject;
         bool loading;
         VisThread visThread;
         ofTrueTypeFont font;
+        ofxParagraph paragraph;
 };
 
 

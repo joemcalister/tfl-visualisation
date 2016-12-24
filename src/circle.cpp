@@ -9,7 +9,7 @@
 #include "circle.hpp"
 
 
-circle::circle(float _radius, float _z) : radius(_radius), z(_z)
+circle::circle(float _radius, float _z, string _severity) : radius(_radius), z(_z), severity(_severity)
 {
     
 }
@@ -19,7 +19,7 @@ circle::circle()
     
 }
 
-void circle::draw()
+void circle::draw(bool coloured, bool layered)
 {
     // push matrix allowing local changes
     ofPushMatrix();
@@ -27,11 +27,35 @@ void circle::draw()
     // always draw in 0,0
     ofTranslate(0,0);
     
-    // dont fill the shape
-    ofNoFill();
-    
     // set line colour to black
-    ofSetColor(0);
+    if (coloured)
+    {
+        if (severity == "Minimal")
+        {
+            ofSetColor(236,228,19);
+        }else if (severity == "Moderate")
+        {
+            ofSetColor(236,177,19);
+        }else if (severity == "Serious")
+        {
+            ofSetColor(236,101,19);
+        }else if (severity == "Severe")
+        {
+            ofSetColor(236,25,19);
+        }else {
+            ofSetColor(255);
+        }
+    }else {
+        ofSetColor(255);
+    }
+    
+    // if filled
+    if (layered)
+    {
+        ofFill();
+    }else {
+        ofNoFill();
+    }
     
     // start drawing the shape
     ofBeginShape();

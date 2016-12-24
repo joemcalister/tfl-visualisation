@@ -19,7 +19,7 @@ bool Networking::getTFLData()
     string today = getDateString(0);
     string yesterday = getDateString(1);
     string requestURL = "https://api.tfl.gov.uk/Road/All/Disruption?startDate="+yesterday+"&endDate="+today;
-    
+
     // make request, get json
     ofHttpResponse resp = ofLoadURL(requestURL);
     string resultRaw = resp.data;

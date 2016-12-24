@@ -24,12 +24,13 @@ class circle {
         float z = 0;
         float z_base = 0;
         float c = 0;
+        string severity;
     
     public:
     
         circle();
-        circle(float _radius, float _z);
-        void draw();
+        circle(float _radius, float _z, string _severity);
+        void draw(bool coloured, bool layered);
 };
 
 #endif /* circle_hpp */
