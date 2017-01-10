@@ -1,2 +1,3 @@
 ofxParagraph
 ofxSmartFont
+ofxXmlSettings

@@ -36,10 +36,11 @@ bool VisObject::createVisObject()
             // push back the descriptions
             string des = "";
             des.append(obj["location"]);
+            des.append("\n");
             
             if (obj["comments"].size() != 0)
             {
-                //des.append("\n");
+                //des.append("\r");
                 des.append(obj["comments"]);
             }
             

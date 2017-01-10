@@ -50,6 +50,7 @@ class ofApp : public ofBaseApp{
         VisThread visThread;
         ofTrueTypeFont font;
         ofxParagraph paragraph;
+        ofImage logo;
 };
 
 

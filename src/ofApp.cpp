@@ -3,7 +3,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-
+    
     // easycam support
     camera = ofEasyCam();
     camera.disableMouseMiddleButton();
@@ -49,9 +49,13 @@ void ofApp::setup(){
     paragraph.setFont("SF-UI-Display-Medium.otf", 12);
     paragraph.setLeading(5);
     paragraph.setIndent(0);
+    paragraph.setAlignment(ofxParagraph::ALIGN_CENTER);
     
     // load font -- remove soon
     font.load("SF-UI-Display-Medium.otf", 12);
+    
+    // load my logo
+    logo.load("logo.jpg");
 }
 
 //--------------------------------------------------------------
@@ -103,7 +107,14 @@ void ofApp::draw(){
     if (!visObject.loaded)
     {
         ofSetColor(255, 255, 255);
-        font.drawString("Asking TfL for data...", (ofGetWidth()/2) - (font.stringWidth("Asking TfL for data...")/2), ofGetHeight()/2);
+        
+        string tflString = "Fetching recent data from TfL...\nControls: Page scroll zooms in and out, click and drag to pan around the object.";
+        font.drawString(tflString, (ofGetWidth()/2) - (font.stringWidth(tflString)/2), ofGetHeight()/2);
+        
+        logo.draw((ofGetWidth()/2) - 25, ofGetHeight()-125, 50, 56);
+        ofHideCursor();
+    }else {
+        ofShowCursor();
     }
 }
 
@@ -166,7 +177,6 @@ void ofApp::downLayerCallback(bool clicked)
     {
         visObject.layerIndex += 1;
         paragraph.setText(visObject.descriptionForLayer(visObject.layerIndex));
-
     }
 }
 

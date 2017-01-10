@@ -27,7 +27,6 @@ class circle {
         string severity;
     
     public:
-    
         circle();
         circle(float _radius, float _z, string _severity);
         void draw(bool coloured, bool layered);

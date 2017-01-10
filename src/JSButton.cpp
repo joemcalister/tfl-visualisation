@@ -11,16 +11,9 @@
 JSButton::JSButton(float _x, float _y, float _w, float _h, string _t)
 {
     // set non-user defaults
-    regularBackground = ofColor();
-    regularBackground.r = 210;
-    regularBackground.g = 210;
-    regularBackground.b = 210;
-    hoverBackground.r = 200;
-    hoverBackground.g = 200;
-    hoverBackground.b = 200;
-    borderColor.r = 0;
-    borderColor.g = 0;
-    borderColor.b = 0;
+    regularBackground = ofColor(210,210,210);
+    hoverBackground = ofColor(200,200,200);
+    borderColor = ofColor(0,0,0);
     borderWidth = 0;
     textColor = ofColor(255,255,255);
     onTextColor = ofColor(255,255,255);
@@ -47,24 +40,19 @@ JSButton::JSButton(float _x, float _y, float _w, float _h, string _t)
     
     // load font
     font.load("SF-UI-Display-Medium.otf", 12);
-    
 }
 
 JSButton::JSButton()
 {
     // set non-user defaults
-    regularBackground = ofColor();
-    regularBackground.r = 210;
-    regularBackground.g = 210;
-    regularBackground.b = 210;
-    hoverBackground.r = 200;
-    hoverBackground.g = 200;
-    hoverBackground.b = 200;
-    borderColor.r = 0;
-    borderColor.g = 0;
-    borderColor.b = 0;
+    regularBackground = ofColor(210,210,210);
+    hoverBackground = ofColor(200,200,200);
+    borderColor = ofColor(0,0,0);
     borderWidth = 0;
-    
+    textColor = ofColor(255,255,255);
+    onTextColor = ofColor(255,255,255);
+    highlightedTextColor = ofColor(255,255,255);
+    onBackground = ofColor(210,210,210);
     
     // set the default coordinates and string
     base.x = 0;
@@ -83,7 +71,6 @@ void JSButton::draw()
     
     // draw the rectangle
     ofFill();
-    
     
     // detect mouse over
     ofColor textCol;
@@ -160,9 +147,7 @@ void JSButton::draw()
         }
         
         ofDrawRectRounded(base, 10);
-        
     }
-    
     
     // draw the text
     ofPushMatrix();
@@ -174,8 +159,6 @@ void JSButton::draw()
     
     // pop the matrix
     ofPopMatrix();
-
-    
 }
 
 void JSButton::hide()
@@ -186,25 +169,19 @@ void JSButton::hide()
 void JSButton::setBackgroundColorNormal(float _r, float _g, float _b)
 {
     // set the regular background -- this is when the mouse is not over or pressed
-    regularBackground.r = _r;
-    regularBackground.g = _g;
-    regularBackground.b = _b;
+    regularBackground = ofColor(_r,_g,_b);
 }
 
 void JSButton::setBackgroundColorHover(float _r, float _g, float _b)
 {
     // set the hover background -- this is when the mouse is over the button but not pressed
-    hoverBackground.r = _r;
-    hoverBackground.g = _g;
-    hoverBackground.b = _b;
+    hoverBackground = ofColor(_r,_g,_b);
 }
 
 void JSButton::setBorderColor(float _r, float _g, float _b)
 {
     // set the border color
-    borderColor.r = _r;
-    borderColor.g = _g;
-    borderColor.b = _b;
+    borderColor = ofColor(_r,_g,_b);
 }
 
 void JSButton::setBorderWidth(int width)
