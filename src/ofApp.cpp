@@ -10,9 +10,11 @@ void ofApp::setup(){
     
     // create vis object
     visObject = VisObject();
+    smallObject = VisObject();
     
     // set loading flag
     loading = true;
+    ready = false;
     
     // load the background thread for the vis object
     visThread.visObject = &visObject;
@@ -49,7 +51,7 @@ void ofApp::setup(){
     paragraph.setFont("SF-UI-Display-Medium.otf", 12);
     paragraph.setLeading(5);
     paragraph.setIndent(0);
-    paragraph.setAlignment(ofxParagraph::ALIGN_CENTER);
+    paragraph.setAlignment(ofxParagraph::ALIGN_LEFT);
     
     // load font -- remove soon
     font.load("SF-UI-Display-Medium.otf", 12);
@@ -70,7 +72,7 @@ void ofApp::draw(){
     ofBackground(0);
     
     // if loaded, draw
-    if (visObject.loaded)
+    if (ready)
     {
         camera.begin();
         visObject.draw();
@@ -95,25 +97,36 @@ void ofApp::draw(){
         {
             upLayer.draw();
             downLayer.draw();
-            paragraph.draw(50, 50);
+            paragraph.draw(50, 70);
         }else {
             upLayer.hide();
             downLayer.hide();
         }
- 
     }
     
     // load the font -- do this in a custom label class next time
-    if (!visObject.loaded)
+    if (!ready)
     {
         ofSetColor(255, 255, 255);
         
-        string tflString = "Fetching recent data from TfL...\nControls: Page scroll zooms in and out, click and drag to pan around the object.";
+        string tflString;
+        if (!visObject.loaded)
+        {
+            tflString = "Fetching recent data from TfL...\nControls: Page scroll zooms in and out, click and drag to pan around the object.\nKey: Red to yellow == Most to least severe, the smaller the more recent the incident.";
+            ofHideCursor();
+        }else {
+            tflString = "\nControls: Page scroll zooms in and out, click and drag to pan around the object.\nKey: Red to yellow == Most to least severe, the smaller the more recent the incident.\n\nClick to begin.";
+            ofShowCursor();
+        }
+        
+        // fraw the fonts string
         font.drawString(tflString, (ofGetWidth()/2) - (font.stringWidth(tflString)/2), ofGetHeight()/2);
         
+        // also draw my logo at the bottom center
         logo.draw((ofGetWidth()/2) - 25, ofGetHeight()-125, 50, 56);
-        ofHideCursor();
+        
     }else {
+        // fallback to make sure the cursor is always visible
         ofShowCursor();
     }
 }
@@ -182,6 +195,12 @@ void ofApp::downLayerCallback(bool clicked)
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
+    
+    // trigger ready if needed, this hides the splash screen
+    if (!ready)
+    {
+        ready = true;
+    }
     
     // add the mouse pressed handler for colourcodetoggle
     colourCodeToggle.addHandler(std::bind(&ofApp::toggleColourCallback, this, std::placeholders::_1));

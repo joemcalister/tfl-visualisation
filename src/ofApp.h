@@ -45,8 +45,8 @@ class ofApp : public ofBaseApp{
         JSButton debugButton, colourCodeToggle, viewLayers, upLayer, downLayer;
         ofEasyCam camera;
         vector <circle> circles;
-        VisObject visObject;
-        bool loading;
+        VisObject visObject, smallObject;
+        bool loading, ready;
         VisThread visThread;
         ofTrueTypeFont font;
         ofxParagraph paragraph;

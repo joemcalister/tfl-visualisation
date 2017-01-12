@@ -31,6 +31,7 @@ class VisObject
         int layerIndex;
         int numberOfLayers();
         string descriptionForLayer(int index);
+    
 };
 
 #endif /* VisObject_hpp */

@@ -20,6 +20,8 @@ bool Networking::getTFLData()
     string yesterday = getDateString(1);
     string requestURL = "https://api.tfl.gov.uk/Road/All/Disruption?startDate="+yesterday+"&endDate="+today;
 
+    cout << requestURL << endl;
+    
     // make request, get json
     ofHttpResponse resp = ofLoadURL(requestURL);
     string resultRaw = resp.data;

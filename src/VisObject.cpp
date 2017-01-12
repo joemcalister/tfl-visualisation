@@ -7,6 +7,9 @@
 //
 
 #include "VisObject.hpp"
+#include <fstream>
+#include <regex>
+#include <iterator>
 
 VisObject::VisObject()
 {
@@ -35,13 +38,40 @@ bool VisObject::createVisObject()
             
             // push back the descriptions
             string des = "";
-            des.append(obj["location"]);
-            des.append("\n");
             
             if (obj["comments"].size() != 0)
             {
                 //des.append("\r");
-                des.append(obj["comments"]);
+                string str = obj["comments"];
+                
+                // some comments include html tags, these need to be removed, see below
+                // get the index of the first html character
+                size_t startIndex = str.find( "<" );
+                
+                // check the character is indeed in the string
+                if (startIndex != string::npos)
+                {
+                    // this was found in string
+                    startIndex += 1;
+                    string::size_type endIndex = str.find(">", startIndex);
+                    string finalHtmlElement = "<"+str.substr(startIndex, endIndex - startIndex)+">";
+                    
+                    // now delete the tag from str
+                    string::size_type pos = str.find(finalHtmlElement);
+                    if (pos != string::npos)
+                    {
+                        str.erase(pos, str.length());
+                    }
+                }
+                
+                // check for empty string
+                if (str.length() == 0)
+                {
+                    str = "No information available";
+                }
+                
+                // append our string
+                des.append(str);
             }
             
             
@@ -62,6 +92,8 @@ bool VisObject::createVisObject()
     }
     
 }
+
+
 
 // main draw function for the object
 void VisObject::draw()
@@ -98,4 +130,6 @@ string VisObject::descriptionForLayer(int index)
 {
     return descriptions[index];
 }
+
+
 
