@@ -15,6 +15,7 @@ void ofApp::setup(){
     // set loading flag
     loading = true;
     ready = false;
+    cardAlpha = 1.0;
     
     // load the background thread for the vis object
     visThread.visObject = &visObject;
@@ -46,15 +47,15 @@ void ofApp::setup(){
         button->setOnTextColor(0, 0, 0);
     }
     
-    paragraph = ofxParagraph("Descriptive text here", 300);
+    paragraph = ofxParagraph("Description", 300);
     paragraph.setColor(ofColor(255,255,255));
-    paragraph.setFont("SF-UI-Display-Medium.otf", 12);
+    paragraph.setFont("Inconsolata.otf", 12);
     paragraph.setLeading(5);
     paragraph.setIndent(0);
     paragraph.setAlignment(ofxParagraph::ALIGN_LEFT);
     
-    // load font -- remove soon
-    font.load("SF-UI-Display-Medium.otf", 12);
+    // load font
+    font.load("Inconsolata.otf", 12);
     
     // load my logo
     logo.load("logo.jpg");
@@ -107,6 +108,7 @@ void ofApp::draw(){
     // load the font -- do this in a custom label class next time
     if (!ready)
     {
+        // set the colour
         ofSetColor(255, 255, 255);
         
         string tflString;
@@ -172,6 +174,12 @@ void ofApp::viewLayersCallback(bool clicked)
         }
         visObject.toggleLayers(!visObject.layerMode);
         viewLayers.on = !viewLayers.on;
+    }
+    
+    // display the descriptive text initially
+    if (viewLayers.on)
+    {
+        paragraph.setText(visObject.descriptionForLayer(visObject.layerIndex));
     }
 }
 

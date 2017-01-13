@@ -39,7 +39,7 @@ JSButton::JSButton(float _x, float _y, float _w, float _h, string _t)
     title = _t;
     
     // load font
-    font.load("SF-UI-Display-Medium.otf", 12);
+    font.load("Inconsolata.otf", 12);
 }
 
 JSButton::JSButton()
@@ -61,7 +61,7 @@ JSButton::JSButton()
     base.height = 50;
     
     // load font
-    font.load("SF-UI-Display-Medium.otf", 12);
+    font.load("Inconsolata.otf", 12);
 }
 
 void JSButton::draw()

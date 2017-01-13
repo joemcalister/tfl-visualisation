@@ -51,6 +51,7 @@ class ofApp : public ofBaseApp{
         ofTrueTypeFont font;
         ofxParagraph paragraph;
         ofImage logo;
+        float cardAlpha;
 };
 
 
