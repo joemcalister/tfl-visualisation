@@ -1,4 +1,5 @@
 # Traffic visualisation using TfL data
+![Traffic Visualisation](https://joemcalister.com/img/git/traffic-vis.jpg)
 This project is a visual representation of the road incidents that occur in the past 24 hours in London, using data from TfL and openFrameworks.
 
 ## How to install
